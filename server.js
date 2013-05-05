@@ -1,5 +1,10 @@
 load('vertx.js');
 
-vertx.createHttpServer().requestHandler(function(req) {
-  req.response.end("Hello World!");
-}).listen(8080, "0.0.0.0");
+var router = new vertx.RouteMatcher();
+var get = router.get;
+
+get("/", function(req) {
+    req.response.sendFile("public/index.html");
+});
+
+vertx.createHttpServer().requestHandler(router).listen(8080, "0.0.0.0");
