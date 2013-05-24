@@ -3,6 +3,14 @@ load('./lib/contrib/underscore.js');
 
 var router = new vertx.RouteMatcher();
 
+var md5 = function (input) {
+    var md = java.security.MessageDigest.getInstance("MD5");
+    var bytes = java.lang.String(input).getBytes("UTF-8");
+    var result = java.math.BigInteger(1, md.digest(bytes)).toString(16);
+    console.log(result);
+    return result;
+};
+
 var get = function (path, callback) {
     return router.get(path, function (req) {
         return req.response.end(callback(req));
