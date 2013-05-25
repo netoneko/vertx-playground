@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
 
     sudo apt-get install -y oracle-java8-installer --quiet
 
-    curl -L -s http://vertx.io/downloads/vert.x-1.3.1.final.tar.gz | tar zxvf
+    curl -L -s http://vert-x.github.io/vertx-downloads/downloads/vert.x-1.3.1.final.tar.gz | tar zxv
   EOF
 
   config.vm.define 'testbox' do |v|
